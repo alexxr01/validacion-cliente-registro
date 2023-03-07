@@ -10,15 +10,15 @@ app.get('/', (req, res)=>{
 })
 
 app.post('/registrar', [
-    body('nya', 'Ingrese un nombre y apellido completo')
+    body('usuario', 'El usuario debetener al menos 5 carácteres')
         .exists()
         .isLength({min:5}),
-    body('email', 'Ingrese un E-mail válido')
+    body('email', 'El email introducido no es válido.')
         .exists()
         .isEmail(),
-    body('edad', 'Ingrese un valor numérico')        
+    body('contrasena', 'La contraseña debe tener al menos 5 carácteres')        
         .exists()
-        .isNumeric()
+        .isLength({min:5})
 ], (req, res)=>{
     //Validación de la documentación oficial
     /* const errors = validationResult(req);
