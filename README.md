@@ -1,7 +1,9 @@
-# Proyecto validacion de cliente
+# Proyecto validacion de cliente web
 
 Se ha desarrollado un proyecto web, junto con npm y varias dependencias
 instaladas junto con el, para poder cumplir los requisitos que se nos pide ✌️.
+
+[![N|Solid](https://seeklogo.com/images/N/npm-logo-01B8642EDD-seeklogo.com.png)](https://www.npmjs.com/)
 
 ## Dependencias
 
