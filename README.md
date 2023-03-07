@@ -1,6 +1,7 @@
 # Proyecto validacion de cliente
 
-Se ha desarrollado un proyecto web, junto con node.js para validar
+Se ha desarrollado un proyecto web, junto con npm y varias dependencias
+instaladas junto con el, para poder cumplir los requisitos que se nos pide ✌️.
 
 ## Dependencias
 
