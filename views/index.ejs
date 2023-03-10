@@ -16,7 +16,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registro | Usuarios</title>
     <link rel="icon" type="image/x-icon" href="src/img/favicon.png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 </head>
 
 <body>
@@ -32,45 +33,76 @@
     <!-- Contenido de la pagina -->
     <div class="container">
         <div class="text-center mt-5">
-          <h1>Formulario de registro</h1>
+            <h1>Formulario de registro</h1>
             <h6><span class="badge bg-secondary">Rellene los datos para registrar:</span></h6>
             <!-- Formulario -->
             <div class="col-md-4 offset-md-4">
                 <div class="card my-5">
-                    <form class="card-body cardbody-color p-lg-5">
+                    <form action="/registrar" class="card-body cardbody-color p-lg-5">
                         <div class="mb-3">
-                            <input type="text" class="form-control" name="usuario" id="Usuario" placeholder="Usuario">
+                            <!--<input type="text" class="form-control" name="usuario" id="Usuario" placeholder="Usuario">-->
                             <small class="form-text text-muted">Elige un nombre de usuario único.</small>
+                            <input id="usuario" name="usuario" type="text" class="form-control"
+                                value="<% if(typeof valores != 'undefined') { %><%= valores.usuario %><%}%>">
                         </div>
                         <div class="mb-3">
-                            <input type="text" class="form-control" name="correo" placeholder="Correo">
-                            <small class="form-text text-muted">Necesitaremos tu dirección de correo electrónico.</small>
+                            <!--<input type="text" class="form-control" name="correo" placeholder="Correo">-->
+                            <small class="form-text text-muted">Necesitaremos tu dirección de correo
+                                electrónico.</small>
+                            <input id="email" name="email" type="text" class="form-control"
+                                value="<% if(typeof valores != 'undefined') { %><%= valores.email %><%}%>">
                         </div>
                         <div class="mb-3">
-                            <input type="password" class="form-control" name="contrasena" placeholder="Contraseña">
+                            <!--<input type="password" class="form-control" name="contrasena" placeholder="Contraseña">-->
                             <small class="form-text text-muted">Asegurate de usar una contrasena segura.</small>
+                            <input id="contrasena" name="contrasena" type="text" class="form-control"
+                                value="<% if(typeof valores != 'undefined') { %><%= valores.contrasena %><%}%>">
                         </div>
                         <br>
-                        <button class="btn btn-dark">¡Registrarme!</button>
+                        <button type="submit" class="btn btn-dark">¡Registrarme!</button>
                     </form>
+
+                    <% if(typeof validaciones !='undefined' ) { %>
+                        <% validaciones.forEach( (validacion)=> { %>
+                            <div class="toast-container">
+                                <div class="toast" role="alert" aria-live="assertive" data-bs-autohide="false">
+                                    <div class="toast-header">
+                                        <svg class="bd-placeholder-img rounded me-2" width="20" height="20"
+                                            xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+                                            preserveAspectRatio="xMidYMid slice" focusable="false">
+                                            <rect width="100%" height="100%" fill="#007aff"></rect>
+                                        </svg>
+                                        <strong class="me-auto">¡Atención!</strong>
+                                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                                    </div>
+                                    <div class="toast-body">
+                                        <strong>
+                                            <%= validacion.msg %>
+                                        </strong>
+                                    </div>
+                                </div>
+                            </div>
+                        <% }) %>
+                    <% } %>
+
                 </div>
             </div>
         </div>
     </div>
 
     <!-- JavaScripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
     <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      var toastElList = [].slice.call(document.querySelectorAll('.toast'))
-      var toastList = toastElList.map(function(toastEl) {    
-      return new bootstrap.Toast(toastEl)
-      });
-      toastList.forEach(toast => toast.show());
-    });
+        document.addEventListener('DOMContentLoaded', function () {
+            var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+            var toastList = toastElList.map(function (toastEl) {
+                return new bootstrap.Toast(toastEl)
+            });
+            toastList.forEach(toast => toast.show());
+        });
     </script>
 </body>
 
 </html>
-
-
